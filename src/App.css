@@ -31,3 +31,50 @@
     transform: rotate(360deg);
   }
 }
+
+/* #map {
+  width: 100vw;
+  height: 100vh;
+} */
+
+.control-panel {
+  /* position: absolute; */
+  /* top: 0; */
+  /* right: 0; */
+  max-width: 320px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  padding: 12px 24px;
+  margin: 20px;
+  font-size: 13px;
+  line-height: 2;
+  color: #6b6b76;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.map {
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid black;
+  height: 50vh;
+  width: 50vw;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr minmax(375px, 1fr);
+  
+  /* grid-template-rows: 50px 1fr 50px; */
+  grid-template-areas:
+    "maps list";
+  height: 100vh;
+}
+
+.list {
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid black;
+  max-height: 90vh;
+  overflow-y: scroll;
+}

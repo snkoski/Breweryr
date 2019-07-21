@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MapApp from './Map/Map';
+import Map from './Map/Map';
 import BreweriesList from './Brewerys/BreweriesList';
 import '../App.css';
 import CityContext from '../hooks/CityContext';
@@ -23,7 +23,7 @@ const Home = () => {
         city, setCity, breweries,
       }}
       >
-        <MapApp />
+        <Map />
         <BreweriesList />
       </CityContext.Provider>
     </div>

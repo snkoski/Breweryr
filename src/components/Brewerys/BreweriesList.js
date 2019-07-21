@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import '../../App.css';
 import CityContext from '../../hooks/CityContext';
 
+const getGoogleURL = str => `https://www.google.com/search?q=${str.replace(new RegExp(' ', 'g'), '+')}`;
 const BreweriesList = () => {
   const { city, breweries } = useContext(CityContext);
   const [filter, setFilter] = useState(null);
+
 
   const List = () => {
     const breweriesList = (filter === null)
@@ -14,6 +16,21 @@ const BreweriesList = () => {
     return breweriesList.map(b => (
       <div key={b.id}>
         <h3>{b.name}</h3>
+        <h4>{b.brewery_type}</h4>
+        <h4>{b.street}</h4>
+        <h4>
+          {b.city}
+,
+          {' '}
+          {b.state}
+          {' '}
+          {b.postal_code}
+        </h4>
+        {
+          b.website_url !== ''
+            ? <h4><a target="_new" href={b.website_url}>Website</a></h4>
+            : <h4><a target="_new" href={getGoogleURL(b.name)}>Find on Google</a></h4>
+          }
         <button type="button">
           <Link
             to={{
@@ -37,7 +54,6 @@ const BreweriesList = () => {
 Breweries in
         {' '}
         {city}
-, Colorado
       </h1>
       <div>
         <button type="button" onClick={() => setFilter(null)}>All</button>

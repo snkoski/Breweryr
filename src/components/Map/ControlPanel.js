@@ -20,7 +20,7 @@ const ControlPanel = ({ onViewportChange }) => {
     <div className="control-panel">
       <h3>Pick a city to see their breweries</h3>
       <hr />
-      {CITIES.filter(city => city.state === 'Colorado').map(renderButton)}
+      {CITIES.map(renderButton)}
     </div>
   );
 };

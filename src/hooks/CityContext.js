@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const CityContext = createContext('fort_collins');
+const CityContext = createContext('Boulder');
 
 export default CityContext;

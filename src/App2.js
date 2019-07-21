@@ -5,6 +5,7 @@ import Map from './components/Map';
 import SearchableMap from './components/SearchableMap';
 import MapApp from './MapApp';
 import Home from './components/Home';
+import BreweryDetails from './components/BreweryDetails';
 
 
 function App2() {
@@ -13,9 +14,8 @@ function App2() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/search" component={SearchableMap} />
-          <Route exact path="/map" component={MapApp} />
-          <Route path="/home" component={Home} />
+          <Route path="/brewery/:id" component={BreweryDetails} />
+
         </Switch>
       </BrowserRouter>
     </div>

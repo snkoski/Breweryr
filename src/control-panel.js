@@ -9,7 +9,7 @@ const ControlPanel = ({ onViewportChange }) => {
         type="radio"
         name="city"
         id={`city-${index}`}
-        defaultChecked={city.city === 'Denver'}
+        defaultChecked={city.city === 'Boulder'}
         onClick={() => onViewportChange(city)}
       />
       <label htmlFor={`city-${index}`}>{city.city}</label>

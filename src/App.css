@@ -78,3 +78,33 @@
   max-height: 90vh;
   overflow-y: scroll;
 }
+
+.popup {
+  margin: 0;
+  padding: 0;
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+}
+.mapboxgl-popup-content {
+  padding: 3px !important;
+  background: rgb(243, 198, 198) !important;
+}
+/* .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: #000;
+    }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: #000;
+    }
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: #000;
+    }
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: #000;
+    } */

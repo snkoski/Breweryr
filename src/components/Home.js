@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MapApp from '../MapApp';
-import BreweriesList from './BreweriesList';
+import MapApp from './Map/Map';
+import BreweriesList from './Brewerys/BreweriesList';
 import '../App.css';
 import CityContext from '../hooks/CityContext';
 

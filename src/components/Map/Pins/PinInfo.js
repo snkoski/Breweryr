@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-
+import PropTypes from 'prop-types';
+import '../../../App.css';
 
 const PinInfo = (props) => {
   const { info } = props;
@@ -36,3 +36,11 @@ const PinInfo = (props) => {
 };
 
 export default PinInfo;
+
+PinInfo.propTypes = {
+  info: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    brewery_type: PropTypes.string,
+    website_url: PropTypes.string,
+  }).isRequired,
+};

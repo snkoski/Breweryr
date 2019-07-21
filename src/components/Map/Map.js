@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import ReactMapGL, { FlyToInterpolator, Marker, Popup } from 'react-map-gl';
-import BreweryPin from './BreweryPin';
-import PinInfo from './PinInfo';
-import ControlPanel from './control-panel';
-import CityContext from './hooks/CityContext';
-import './App.css';
+import ControlPanel from './ControlPanel';
+import BreweryPin from './Pins/BreweryPin';
+import PinInfo from './Pins/PinInfo';
+import CityContext from '../../hooks/CityContext';
+import '../../App.css';
 
 const token = 'pk.eyJ1Ijoid3Rmc21va2UiLCJhIjoiY2p5OTliam9lMDFzZzNjbzR1dGE4dmp2cSJ9.Zj-93J_-slJrJcuYoblyAA';
 
-const MapApp = () => {
+const Map = () => {
   const [viewport, setViewport] = useState({
     width: 400,
     height: 400,
@@ -18,11 +18,6 @@ const MapApp = () => {
   });
   const [popup, setPopup] = useState(null);
   const { setCity, breweries } = useContext(CityContext);
-
-  // const onViewportChange = (newViewport) => {
-  //   setViewport(currentState => ({ ...currentState, ...newViewport }));
-  //   setCity(newViewport.city);
-  // };
 
   const changeViewPort = ({ longitude, latitude, city }) => {
     const newViewport = {
@@ -36,17 +31,6 @@ const MapApp = () => {
     setViewport(currentState => ({ ...currentState, ...newViewport }));
     setCity(city);
   };
-
-  // const goToViewport = ({ longitude, latitude, city }) => {
-  //   onViewportChange({
-  //     city,
-  //     longitude,
-  //     latitude,
-  //     zoom: 11,
-  //     transitionInterpolator: new FlyToInterpolator(),
-  //     transitionDuration: 2000,
-  //   });
-  // };
 
   const renderBreweryMarker = (brewery, index) => (
     <Marker key={`marker-${index}`} longitude={parseFloat(brewery.longitude)} latitude={parseFloat(brewery.latitude)}><BreweryPin size={10} onClick={() => setPopup({ ...brewery })} /></Marker>
@@ -88,11 +72,10 @@ const MapApp = () => {
       <div>
         <ControlPanel
           onViewportChange={changeViewPort}
-          // onViewportChange={goToViewport}
         />
       </div>
     </div>
   );
 };
 
-export default MapApp;
+export default Map;

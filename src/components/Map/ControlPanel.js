@@ -1,6 +1,6 @@
 import React from 'react';
-
-import CITIES from './data/cities.json';
+import PropTypes from 'prop-types';
+import CITIES from '../../data/cities.json';
 
 const ControlPanel = ({ onViewportChange }) => {
   const renderButton = (city, index) => (
@@ -26,3 +26,7 @@ const ControlPanel = ({ onViewportChange }) => {
 };
 
 export default ControlPanel;
+
+ControlPanel.propTypes = {
+  onViewportChange: PropTypes.func.isRequired,
+};

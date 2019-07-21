@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
+import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-import MapApp from './MapApp';
-import App2 from './App2';
 
 ReactDOM.render(
   (
     <Router>
-      {/* <App /> */}
-      {/* <MapApp /> */}
-      <App2 />
+      <App />
     </Router>
   ), document.getElementById('root'),
 );

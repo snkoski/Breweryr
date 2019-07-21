@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
-import CityContext from '../hooks/CityContext';
+import '../../App.css';
+import CityContext from '../../hooks/CityContext';
 
 const BreweriesList = () => {
   const { city, breweries } = useContext(CityContext);
@@ -23,7 +23,7 @@ const BreweriesList = () => {
               },
             }}
           >
-                                More details
+          More details
             {' '}
           </Link>
         </button>

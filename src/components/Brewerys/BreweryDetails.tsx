@@ -19,7 +19,7 @@ const BreweriesList = ({ match, location }) => {
         {brewery.street}
         <br />
         {brewery.city}
-,
+        ,
         {' '}
         {brewery.state}
         {' '}

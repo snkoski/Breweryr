@@ -23,15 +23,6 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* #map {
   width: 100vw;
   height: 100vh;
@@ -41,7 +32,11 @@
   /* position: absolute; */
   /* top: 0; */
   /* right: 0; */
-  max-width: 320px;
+  /* max-width: 320px; */
+  max-height: 260px;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
   background: #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   padding: 12px 24px;
@@ -51,6 +46,12 @@
   color: #6b6b76;
   text-transform: uppercase;
   outline: none;
+}
+
+.control-panel .title {
+  grid-column: 1 / -1;
+  text-align: center;
+  text-decoration-line: underline;
 }
 
 .map {
@@ -71,12 +72,29 @@
   height: 100vh;
 }
 
-.list {
+.brewery-list {
   margin: 5px;
   padding: 5px;
   border: 2px solid black;
   max-height: 90vh;
   overflow-y: scroll;
+  text-align: center;
+}
+
+.brewery-list-city {
+  line-height: 1;
+  font-family: 'El Messir';
+
+}
+
+.brewery-card {
+  /* border: 1px solid; */
+  margin: 5px 5px;
+  padding: 5px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  outline: none;
+
 }
 
 .popup {
@@ -92,19 +110,38 @@
   padding: 3px !important;
   background: rgb(243, 198, 198) !important;
 }
-/* .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
-    border-bottom-color: #000;
-    }
-.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
-    border-top-color: #000;
-    }
-.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
-    border-right-color: #000;
-    }
-.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
-    border-left-color: #000;
-    } */
+.selected {
+  /* color:red; */
+  background-color: rgb(156, 192, 247);
+  border-radius: 5px;
+}
+.header {
+  background-color: #f3c6f3;
+  height: 6vh;
+  text-align: center;
+  /* font-family: 'Cinzel Decorative'; */
+  font-family: 'El Messir';
+  font-weight: 900;
+  font-size: 5vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  
+}
+
+.button-container {
+  display:grid;
+  grid-auto-flow: column;
+  grid-gap: 2px;
+}
+
+.button {
+  padding: 10px 0px;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  font-weight: 700;
+}
+/* .input {
+  padding: 10px 50px;
+} */

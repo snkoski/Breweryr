@@ -24,7 +24,7 @@ const Map = () => {
       city,
       longitude,
       latitude,
-      zoom: 11,
+      zoom: 10,
       transitionInterpolator: new FlyToInterpolator(),
       transitionDuration: 2000,
     };

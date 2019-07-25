@@ -1,24 +1,47 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import CityContext from '../../hooks/CityContext';
 
+const upperFirst = string => string.charAt(0).toUpperCase() + string.slice(1);
+const breweryTypes = ['all', 'micro', 'regional', 'brewpub', 'large', 'planning', 'bar', 'contract', 'proprietor'];
 const getGoogleURL = str => `https://www.google.com/search?q=${str.replace(new RegExp(' ', 'g'), '+')}`;
 const BreweriesList = () => {
-  const { city, breweries } = useContext(CityContext);
-  const [filter, setFilter] = useState(null);
+  const { city, breweries, types } = useContext(CityContext);
+  const [filter, setFilter] = useState('all');
+  // useEffect(() => {
+  //   setFilter('all');
+  // }, [city]);
 
+  const renderButton = (type, index) => (
+    <button
+      key={`btn-${index}`}
+      style={{ display: 'inline' }}
+      className={type === filter ? 'button selected' : 'button'}
+      type="button"
+      name="breweryType"
+      id={`type-${index}`}
+      onClick={() => setFilter(type)}
+    >
+      {type}
+    </button>
+  );
 
   const List = () => {
-    const breweriesList = (filter === null)
+    const breweriesList = (filter === 'all')
       ? breweries
       : breweries.filter(b => b.brewery_type === filter);
     return breweriesList.map(b => (
-      <div key={b.id}>
-        <h3>{b.name}</h3>
-        <h4>{b.brewery_type}</h4>
-        <h4>{b.street}</h4>
+      <div key={b.id} className="brewery-card">
+        <h2>{b.name}</h2>
         <h4>
+          Type:
+          {' '}
+          {upperFirst(b.brewery_type)}
+        </h4>
+        <h4>
+          {b.street}
+          <br />
           {b.city}
 ,
           {' '}
@@ -49,23 +72,20 @@ const BreweriesList = () => {
   };
 
   return (
-    <div className="list">
-      <h1>
+    <div className="brewery-list">
+      <h1 className="brewery-list-city">
 Breweries in
         {' '}
         {city}
       </h1>
+      <hr />
       <div>
-        <button type="button" onClick={() => setFilter(null)}>All</button>
-        <button type="button" onClick={() => setFilter('micro')}>Micro</button>
-        <button type="button" onClick={() => setFilter('regional')}>Regional</button>
-        <button type="button" onClick={() => setFilter('brewpub')}>Brewpub</button>
-        <button type="button" onClick={() => setFilter('large')}>Large</button>
-        <button type="button" onClick={() => setFilter('planning')}>Planning</button>
-        <button type="button" onClick={() => setFilter('bar')}>Bar</button>
-        <button type="button" onClick={() => setFilter('contract')}>Contract</button>
-        <button type="button" onClick={() => setFilter('proprietor')}>Proprietor</button>
-        <List listFilter={filter} />
+        <div className="button-container">
+          {types.map(renderButton)}
+        </div>
+        <div>
+          <List listFilter={filter} />
+        </div>
       </div>
     </div>
   );

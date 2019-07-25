@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const BrewerDetails = ({ brewery }) => (
   <div>
@@ -16,3 +17,13 @@ const BrewerDetails = ({ brewery }) => (
   </div>
 );
 export default BrewerDetails;
+
+BrewerDetails.propTypes = {
+  brewery: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    street: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
+    postal_code: PropTypes.string,
+  }).isRequired,
+};

@@ -5,8 +5,8 @@ import BreweriesList from './Brewerys/BreweriesList';
 import '../App.css';
 import CityContext from '../hooks/CityContext';
 
-const getGeocodingAddress = (street, city, state, postal_code) => {
-  const connected = `${street} ${city} ${state} ${postal_code}`;
+const getGeocodingAddress = (street, city, state, postalCode) => {
+  const connected = `${street} ${city} ${state} ${postalCode}`;
   const replaced = connected.replace(new RegExp(' ', 'g'), '%20');
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${replaced}.json?types=address&access_token=pk.eyJ1Ijoid3Rmc21va2UiLCJhIjoiY2p5OTliam9lMDFzZzNjbzR1dGE4dmp2cSJ9.Zj-93J_-slJrJcuYoblyAA`;
   return url;
@@ -22,30 +22,40 @@ const assign = ([long, lat], orig) => {
 const Home = () => {
   const [city, setCity] = useState('Boulder');
   const [breweries, setBreweries] = useState([]);
+  const [types, setTypes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`https://api.openbrewerydb.org/breweries?by_city=${city}&per_page=50`);
-      const test = result.data.map((r) => {
+      const uniqueTypes = [...new Set(result.data.map(b => b.brewery_type))];
+      uniqueTypes.unshift('all');
+      console.log('UN', uniqueTypes);
+      setTypes(uniqueTypes);
+      const resultBreweries = result.data.map((r) => {
         if (r.latitude === null) {
           const add = getGeocodingAddress(r.street, r.city, r.state, r.postal_code);
           axios.get(add)
             .then(resp => resp.data.features[0].center)
-            .then(res => assign(res, r)).then(l => l)
-            .catch(err => console.log(err));
+            .then(res => assign(res, r));
+          // .catch(err => console.log(err));
         }
         return r;
       });
-      console.log('TEST', test);
-      setBreweries(test);
+      setBreweries(resultBreweries);
     };
     fetchData();
   }, [city]);
 
+  // useEffect(() => {
+  //   const uniqueTypes = [...new Set(breweries.map(b => b.brewery_type))];
+  //   uniqueTypes.unshift('all');
+  //   setTypes(uniqueTypes);
+  // }, [city]);
+
   return (
     <div className="home-container">
       <CityContext.Provider value={{
-        city, setCity, breweries,
+        city, setCity, breweries, types,
       }}
       >
         <Map />

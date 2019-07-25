@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import BreweryDetails from './Brewerys/BreweryDetails';
 import MapSingle from './Map/MapSingle';
@@ -18,13 +19,15 @@ const Details = ({ match, location }) => {
 
   return (
     <div className="details-container">
-      {/* <CityContext.Provider value={{ */}
-      {/* city, setCity, breweries, */}
-      {/* }} */}
-      {/* > */}
+      <div>
+        <h1>
+          <Link to="/">
+          Go Back
+          </Link>
+        </h1>
+      </div>
       <BreweryDetails brewery={brewery} />
       <MapSingle brewery={brewery} />
-      {/* </CityContext.Provider> */}
     </div>
   );
 };

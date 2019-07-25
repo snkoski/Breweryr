@@ -18,8 +18,7 @@ const ControlPanel = ({ onViewportChange }) => {
 
   return (
     <div className="control-panel">
-      <h3>Pick a city to see their breweries</h3>
-      <hr />
+      <h3 className="title">Pick a city to see their breweries</h3>
       {CITIES.map(renderButton)}
     </div>
   );

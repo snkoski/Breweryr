@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
+import PropTypes from 'prop-types';
 import BreweryPin from './Pins/BreweryPin';
 
 const token = 'pk.eyJ1Ijoid3Rmc21va2UiLCJhIjoiY2p5OTliam9lMDFzZzNjbzR1dGE4dmp2cSJ9.Zj-93J_-slJrJcuYoblyAA';
@@ -48,3 +49,11 @@ const MapSingle = ({ brewery }) => {
 };
 
 export default MapSingle;
+
+MapSingle.propTypes = {
+  brewery: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    latitude: PropTypes.string,
+    longitude: PropTypes.string,
+  }).isRequired,
+};

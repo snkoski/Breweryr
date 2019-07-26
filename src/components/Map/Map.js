@@ -17,11 +17,11 @@ const Map = () => {
     zoom: 10,
   });
   const [popup, setPopup] = useState(null);
-  const { setCity, breweries } = useContext(CityContext);
+  const { setCity, breweries, cities } = useContext(CityContext);
 
-  const changeViewPort = ({ longitude, latitude, city }) => {
+  const changeViewPort = ({ longitude, latitude, name }) => {
     const newViewport = {
-      city,
+      name,
       longitude,
       latitude,
       zoom: 10,
@@ -29,7 +29,7 @@ const Map = () => {
       transitionDuration: 2000,
     };
     setViewport(currentState => ({ ...currentState, ...newViewport }));
-    setCity(city);
+    setCity(name);
   };
 
   const renderBreweryMarker = (brewery, index) => (
@@ -41,11 +41,9 @@ const Map = () => {
 
       <Popup
         tipSize={5}
-        // anchor="bottom"
         longitude={parseFloat(popup.longitude)}
         latitude={parseFloat(popup.latitude)}
         closeButton={false}
-        // closeOnClick={true}
         onClose={() => setPopup(null)}
         className="popup"
       >
@@ -71,6 +69,7 @@ const Map = () => {
       </div>
       <div>
         <ControlPanel
+          cities={cities}
           onViewportChange={changeViewPort}
         />
       </div>

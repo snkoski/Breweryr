@@ -23,16 +23,7 @@
   color: #61dafb;
 }
 
-/* #map {
-  width: 100vw;
-  height: 100vh;
-} */
-
 .control-panel {
-  /* position: absolute; */
-  /* top: 0; */
-  /* right: 0; */
-  /* max-width: 320px; */
   max-height: 260px;
   overflow-y: scroll;
   display: grid;
@@ -43,7 +34,7 @@
   margin: 20px;
   font-size: 13px;
   line-height: 2;
-  color: #6b6b76;
+  color: #000000;
   text-transform: uppercase;
   outline: none;
 }
@@ -54,31 +45,37 @@
   text-decoration-line: underline;
 }
 
+.mapapp {
+  max-height: 85vh;
+  justify-self: center;
+
+}
+
 .map {
   margin: 5px;
   padding: 5px;
-  border: 2px solid black;
-  height: 50vh;
+  /* border: 2px solid black; */
+  height: 45vh;
   width: 50vw;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
 }
 
 .home-container {
   display: grid;
   grid-template-columns: 1fr minmax(375px, 1fr);
-  
-  /* grid-template-rows: 50px 1fr 50px; */
-  grid-template-areas:
+    grid-template-areas:
     "maps list";
   height: 100vh;
 }
-
 .brewery-list {
   margin: 5px;
   padding: 5px;
-  border: 2px solid black;
-  max-height: 90vh;
+  /* border: 2px solid black; */
+  max-height: 85vh;
   overflow-y: scroll;
   text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .brewery-list-city {
@@ -88,7 +85,6 @@
 }
 
 .brewery-card {
-  /* border: 1px solid; */
   margin: 5px 5px;
   padding: 5px;
   background: #fff;
@@ -108,21 +104,19 @@
 }
 .mapboxgl-popup-content {
   padding: 3px !important;
-  background: rgb(243, 198, 198) !important;
+  background: #ffffff !important;
 }
 .selected {
-  /* color:red; */
   background-color: rgb(156, 192, 247);
   border-radius: 5px;
 }
 .header {
   background-color: #f3c6f3;
-  height: 6vh;
+  height: 10vh;
   text-align: center;
-  /* font-family: 'Cinzel Decorative'; */
   font-family: 'El Messir';
   font-weight: 900;
-  font-size: 5vh;
+  font-size: 8vh;
   display: grid;
   justify-items: center;
   align-items: center;
@@ -142,6 +136,9 @@
   font-size: 1em;
   font-weight: 700;
 }
-/* .input {
-  padding: 10px 50px;
-} */
+.details-container {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+}

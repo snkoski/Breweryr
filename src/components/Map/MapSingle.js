@@ -52,8 +52,8 @@ export default MapSingle;
 
 MapSingle.propTypes = {
   brewery: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    latitude: PropTypes.string,
-    longitude: PropTypes.string,
+    id: PropTypes.number,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
   }).isRequired,
 };

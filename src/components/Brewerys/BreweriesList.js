@@ -1,17 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import CityContext from '../../hooks/CityContext';
 
 const upperFirst = string => string.charAt(0).toUpperCase() + string.slice(1);
-const breweryTypes = ['all', 'micro', 'regional', 'brewpub', 'large', 'planning', 'bar', 'contract', 'proprietor'];
 const getGoogleURL = str => `https://www.google.com/search?q=${str.replace(new RegExp(' ', 'g'), '+')}`;
 const BreweriesList = () => {
   const { city, breweries, types } = useContext(CityContext);
   const [filter, setFilter] = useState('all');
-  // useEffect(() => {
-  //   setFilter('all');
-  // }, [city]);
 
   const renderButton = (type, index) => (
     <button

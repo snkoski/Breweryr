@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import BreweryDetails from './Brewerys/BreweryDetails';
 import MapSingle from './Map/MapSingle';
 import '../App.css';
-// import CityContext from '../hooks/CityContext';
 
-const Details = ({ match, location }) => {
+const Details = ({ location }) => {
   const [brewery, setBrewery] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`https://api.openbrewerydb.org/breweries/${location.state.breweryID}`);
-      setBrewery(result.data);
+      const result = await axios.get(`http://3.218.162.55/breweries/${location.state.breweryID}`);
+      setBrewery(result.data.brewery);
     };
     fetchData();
   }, [location.state.breweryID]);
 
   return (
     <div className="details-container">
+      <BreweryDetails brewery={brewery} />
+      <MapSingle brewery={brewery} />
       <div>
         <h1>
           <Link to="/">
@@ -26,10 +28,20 @@ const Details = ({ match, location }) => {
           </Link>
         </h1>
       </div>
-      <BreweryDetails brewery={brewery} />
-      <MapSingle brewery={brewery} />
     </div>
   );
 };
 
 export default Details;
+
+Details.propTypes = {
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+    state: PropTypes.shape({
+      breweryID: PropTypes.number,
+    }),
+  }).isRequired,
+};

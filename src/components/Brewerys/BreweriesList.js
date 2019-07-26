@@ -1,14 +1,18 @@
+// List of breweries and buttons to filter list for Home page
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import CityContext from '../../hooks/CityContext';
 
+// Helper function to capitalize brewery types
 const upperFirst = string => string.charAt(0).toUpperCase() + string.slice(1);
+// Helper function to open Google search if brewery doesn't have a website in the database
 const getGoogleURL = str => `https://www.google.com/search?q=${str.replace(new RegExp(' ', 'g'), '+')}`;
 const BreweriesList = () => {
   const { city, breweries, types } = useContext(CityContext);
   const [filter, setFilter] = useState('all');
 
+  // Make the brewery type filter buttons
   const renderButton = (type, index) => (
     <button
       key={`btn-${index}`}
@@ -23,6 +27,7 @@ const BreweriesList = () => {
     </button>
   );
 
+  // Create the list of breweries based on the current brewery type filter
   const List = () => {
     const breweriesList = (filter === 'all')
       ? breweries
@@ -46,11 +51,13 @@ const BreweriesList = () => {
           {b.postal_code}
         </h4>
         {
+          // Link to brewery website or to Google search
           b.website_url !== ''
             ? <h4><a target="_new" href={b.website_url}>Website</a></h4>
             : <h4><a target="_new" href={getGoogleURL(b.name)}>Find on Google</a></h4>
           }
         <button type="button">
+          {/* Use the breweriy's id for route to details page */}
           <Link
             to={{
               pathname: `brewery/${b.id}`,

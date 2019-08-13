@@ -1,5 +1,5 @@
 // List of breweries and buttons to filter list for Home page
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import CityContext from '../../hooks/CityContext';
@@ -11,6 +11,14 @@ const getGoogleURL = str => `https://www.google.com/search?q=${str.replace(new R
 const BreweriesList = () => {
   const { city, breweries, types } = useContext(CityContext);
   const [filter, setFilter] = useState('all');
+
+  // Check if selected city contains current filtered type, if not set filter to all
+  useEffect(() => {
+    const typeExists = types.filter(type => type === filter);
+    if (!Array.isArray(typeExists) || !typeExists.length) {
+      setFilter('all');
+    }
+  }, [types]);
 
   // Make the brewery type filter buttons
   const renderButton = (type, index) => (

@@ -8,14 +8,15 @@ import '../App.css';
 
 const Details = ({ location }) => {
   const [brewery, setBrewery] = useState({});
+  const breweryId = location.pathname.split('/')[2];
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`http://3.218.162.55/breweries/${location.state.breweryID}`);
+      const result = await axios.get(`http://3.218.162.55/breweries/${breweryId}`);
       setBrewery(result.data.brewery);
     };
     fetchData();
-  }, [location.state.breweryID]);
+  }, [location]);
 
   return (
     <div className="details-container">

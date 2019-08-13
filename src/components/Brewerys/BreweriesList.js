@@ -69,9 +69,7 @@ const BreweriesList = () => {
           <Link
             to={{
               pathname: `brewery/${b.id}`,
-              state: {
-                breweryID: b.id,
-              },
+
             }}
           >
           More details

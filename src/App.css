@@ -1,3 +1,9 @@
+html, body {
+  margin: 0; 
+  height: 100%; 
+  overflow: hidden
+}
+
 .App {
   text-align: center;
 }
@@ -69,13 +75,13 @@
   height: 100vh;
 }
 .brewery-list {
-  margin: 5px;
+  margin: 5px 0;
   padding: 5px;
-  /* border: 2px solid black; */
   max-height: 85vh;
   overflow-y: scroll;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
 }
 
 .brewery-list-city {
@@ -106,12 +112,8 @@
   padding: 3px !important;
   background: #ffffff !important;
 }
-.selected {
-  background-color: rgb(156, 192, 247);
-  border-radius: 5px;
-}
 .header {
-  background-color: #f3c6f3;
+  background-color: #e7717d;
   height: 10vh;
   text-align: center;
   font-family: 'El Messir';
@@ -126,7 +128,7 @@
 .button-container {
   display:grid;
   grid-auto-flow: column;
-  grid-gap: 2px;
+  /* grid-gap: 2px; */
 }
 
 .button {
@@ -135,10 +137,34 @@
   outline: none;
   font-size: 1em;
   font-weight: 700;
+  border: 1px solid rgba(126,104,90,0.3);
+  border-bottom: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: rgba(194,202,208,0.3);
+
 }
 .details-container {
   display: grid;
   justify-content: center;
   text-align: center;
   align-content: center;
+}
+
+.selected {
+  /* background-color: rgba(194,202,208,0.3); */
+  background-color: rgb(194,185,176,0.3);
+  /* border-bottom-right-radius: 0; */
+  /* border-bottom-left-radius: 0; */
+  border-bottom: none;
+}
+
+.brewery-card-container {
+  background-color: rgb(194,185,176,0.3);
+  padding: 5px;
+  border-left: 1px solid rgba(126,104,90,0.3);
+  border-right: 1px solid rgba(126,104,90,0.3);
+  border-bottom: 1px solid rgba(126,104,90,0.3);
+  min-height: 100%;
+
 }

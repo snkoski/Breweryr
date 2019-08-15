@@ -16,7 +16,7 @@ const Details = ({ location }) => {
       setBrewery(result.data.brewery);
     };
     fetchData();
-  }, [location]);
+  }, [location, breweryId]);
 
   return (
     <div className="details-container">

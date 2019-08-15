@@ -18,7 +18,7 @@ const BreweriesList = () => {
     if (!Array.isArray(typeExists) || !typeExists.length) {
       setFilter('all');
     }
-  }, [types]);
+  }, [types, filter]);
 
   // Make the brewery type filter buttons
   const renderButton = (type, index) => (
@@ -92,7 +92,7 @@ Breweries in
         <div className="button-container">
           {types.map(renderButton)}
         </div>
-        <div>
+        <div className="brewery-card-container">
           <List listFilter={filter} />
         </div>
       </div>

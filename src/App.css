@@ -122,7 +122,7 @@ html, body {
   display: grid;
   justify-items: center;
   align-items: center;
-  
+  border-bottom: 3px solid #afd275;
 }
 
 .button-container {

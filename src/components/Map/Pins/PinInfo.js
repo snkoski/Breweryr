@@ -20,6 +20,7 @@ const PinInfo = ({ info }) => (
           </span>
           <a
             target="_new"
+            rel="noopener noreferrer"
             href={info.website_url}
           >
             Web site

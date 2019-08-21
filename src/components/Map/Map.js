@@ -44,7 +44,9 @@ const Map = () => {
         longitude={parseFloat(popup.longitude)}
         latitude={parseFloat(popup.latitude)}
         closeButton={false}
-        onClose={() => setPopup(null)}
+        onClose={() => {
+          setTimeout(() => { setPopup(null); }, 200);
+        }}
         className="popup"
       >
         <PinInfo info={popup} />
